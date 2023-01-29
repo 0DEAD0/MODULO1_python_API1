@@ -1,0 +1,35 @@
+@app.get("/listado")                     #cargar ciudades y crear nueva lista para organizar la base de datos                    
+def ciudades():    
+
+    lista_Nueva = []
+
+    with open("database.txt", "r") as file:
+        ciudades = file.readlines()
+        file.close()
+
+    for item in range(len(ciudades)):
+
+        item_id = ciudades[item].split(" ")
+
+        list_de_ciudades = {
+            "id" : item_id[0],
+            "pais": item_id[1],
+            "ciudad": item_id[2]
+        }
+        lista_Nueva.append(list_de_ciudades)   
+        
+        return {
+        "status": 200,
+        "description": "ciudades y paises",
+        "body": lista_Nueva
+    }
+
+
+
+    if ciudades[item] == ciudades[item]:
+        ciudades[item] = ciudades[item].replace("1, Argentina,","")
+        ciudades[item] = ciudades[item].replace("2, bolivia,"," ")
+        ciudades[item] = ciudades[item].replace("3, Colombia,"," ")
+        ciudades[item] = ciudades[item].replace("4, Brasil,"," ")
+        ciudades[item] = ciudades[item].replace("5, panama,"," ")
+        ciudades[item] = ciudades[item].replace("6, Peru,"," ")
